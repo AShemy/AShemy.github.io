@@ -78,3 +78,6 @@ body {
 		display: none;
 		align-items: middle;
 	}
+	.win h1 {
+		margin-top: 19%;
+	}

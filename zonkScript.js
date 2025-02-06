@@ -24,15 +24,81 @@ function restart(){
 	document.getElementById("scoreRound").innerText = "Очки за раунд: 0";
 	document.getElementById("player1").innerText = "Игрок ";
 }
-		
-	//Создает 6 случайных чисел
+	
+//Создает 6 случайных чисел
 function cubeGenerator6(cube){
 	for (let i = 0; i<6; i++){
 		cube.push(Math.floor(Math.random()*6+1))
 	}
 }
+
+//функция паузы
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+//анимация кубов с вызовом функции tD()
+async function delayedDice() {
+	let animCube = []
+	let time = 10
 	
-	//Ищет количество одинаковых элементов по значениям. Принимает массив случайных чисел
+	let btn = document.getElementById("mainBtn");
+	
+	let dice1 = document.getElementById("dice1");
+	let dice2 = document.getElementById("dice2");
+	let dice3 = document.getElementById("dice3");
+	let dice4 = document.getElementById("dice4");
+	let dice5 = document.getElementById("dice5");
+	let dice6 = document.getElementById("dice6");
+	
+	let dices = [dice1, dice2, dice3, dice4, dice5, dice6];
+	
+	btn.disabled = true;
+	btn.style.backgroundColor = '#808080';
+	btn.innerText = "Подождите...";
+	
+	if (player==1){
+		document.getElementById("player1").innerText = "Игрок 1"
+	}else if (player==2){
+		document.getElementById("player1").innerText = "Игрок 2"
+	}
+	
+	for (let o = 0; o<10; o++){
+		cubeGenerator6(animCube)
+		console.log(animCube)
+		await sleep(time);
+		time += 40
+		for (let i = 0; i<animCube.length; i++){
+			if (animCube[i]==1){
+				dices[i].src = images[0];
+			}else if (animCube[i]==2){
+				dices[i].src = images[1];
+			}else if (animCube[i]==3){
+				dices[i].src = images[2];
+			}else if (animCube[i]==4){
+				dices[i].src = images[3];
+			}else if (animCube[i]==5){
+				dices[i].src = images[4];
+			}else if (animCube[i]==6){
+				dices[i].src = images[5];
+			}
+		}
+		animCube = [];
+	}
+	
+	if (player==1){
+		throwDice(cubeGG, scoreGG);
+		player++;
+	}else if (player==2){
+		throwDice(cubeEnemy, scoreEnemy);
+		player--;
+	}
+	btn.disabled = false;
+	btn.innerText = "Кинуть кости";
+	btn.style.backgroundColor = '#f1d298';
+}
+	
+//Ищет количество одинаковых элементов по значениям. Принимает массив случайных чисел
 function countingIdentical(spisok){
 	let x1=0;
 	let x2=0;
@@ -65,7 +131,7 @@ function countingIdentical(spisok){
 	return(howMany)
 }
 		
-	// Подсчет очков. Принимает результат функции countingIdentical и предыдущие очки игрока
+// Подсчет очков. Принимает результат функции countingIdentical и предыдущие очки за бросок
 function countingScore(howMany, score){
 		if (howMany[1]==6){
 			score = 8000
@@ -157,25 +223,19 @@ function countingScore(howMany, score){
 		return(score)
 	}
 	
-function tD(){
-	if (player==1){
-		document.getElementById("player1").innerText = "Игрок 1"
-		throwDice(cubeGG, scoreGG);
-		player++;
-	}else if (player==2){
-		document.getElementById("player1").innerText = "Игрок 2"
-		throwDice(cubeEnemy, scoreEnemy);
-		player--;
-	}
-}
+//function tD(){
+//	if (player==1){
+//		document.getElementById("player1").innerText = "Игрок 1"
+//		throwDice(cubeGG, scoreGG);
+//		player++;
+//	}else if (player==2){
+//		document.getElementById("player1").innerText = "Игрок 2"
+//		throwDice(cubeEnemy, scoreEnemy);
+//		player--;
+//	}
+//}
 	
 function throwDice(cube, score){
-	if (player==1){
-		console.log("Ход игрока1")
-	}else if (player==2){
-		console.log("Ход игрока2")
-	}
-	
 	cubeGenerator6(cube);
 		
 	console.log(cube);
@@ -230,7 +290,7 @@ function throwDice(cube, score){
 		}
 	}
 	
-	document.getElementById("scoreRound").innerText = "Очков за раунд: "+scoreNow;
+	document.getElementById("scoreRound").innerText = "Очков за бросок: "+scoreNow;
 	scoreNow = 0;
 }
 	

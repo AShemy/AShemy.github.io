@@ -38,14 +38,93 @@
 			<p id='scoreRound'>Очки за бросок: 0</p>
 		</div>
 		<div id="rules">
-			<h1>Правила</h1>
-			<ul>
-				<li>За единицу начисляется 100 очков.</li>
-				<li>За пятерку начисляется 50 очков.</li>
-				<li>За три единицы начисляется 1000 очков.</li>
-				<li>За комбинацию из трех одинаковых чисел начисляется 100 очков, умноженных на само выпавшее число. К примеру, три выпавших тройки дадут 300 очков к счёту (X*100, где X это номинал кости). За каждое последующее одинаковое число сумма очков удваивается, к примеру, за четыре выпавших тройки будет начислено 600 очков, за пять троек – 1200, за шесть троек – 2400.</li>
-				<li>За комбинацию из единицы, двойки, тройки, четверки, пятерки и шестерки начисляется 1500 очков. Если в этой комбинации отсутствует единица - 750, если шестерка - 500.</li>
-			</ul>
+			<h1>Комбинации</h1>
+			<div class='rulesBox'>
+				<p>Одна единица +100</p>
+				<div class='rulesDiceBox'>
+					<img src='1.png'/> 
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>Одна пятерка +50</p>
+				<div class='rulesDiceBox'>
+					<img src='5.png'/> 
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>Три единицы +1000</p>
+				<div class='rulesDiceBox'>
+					<img src='1.png'/>
+					<img src='1.png'/>
+					<img src='1.png'/>
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>Три одинаковых. Кубик x100. 2x100=200</p>
+				<div class='rulesDiceBox'>
+					<img src='2.png'/>
+					<img src='2.png'/>
+					<img src='2.png'/> 
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>+400 Каждый последущий x2. 200x2=400</p>
+				<div class='rulesDiceBox'>
+					<img src='2.png'/>
+					<img src='2.png'/>
+					<img src='2.png'/>
+					<img src='2.png'/>	
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>+800 Каждый последущий x2. 200x2x2=800</p>
+				<div class='rulesDiceBox'>
+					<img src='2.png'/>
+					<img src='2.png'/>
+					<img src='2.png'/>
+					<img src='2.png'/>	
+					<img src='2.png'/> 
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>+1500 </p>
+				<div class='rulesDiceBox'>
+					<img src='1.png'/>
+					<img src='2.png'/>
+					<img src='3.png'/>
+					<img src='4.png'/>
+					<img src='5.png'/>
+					<img src='6.png'/> 
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>+500</p>
+				<div class='rulesDiceBox'>
+					<img src='1.png'/>
+					<img src='2.png'/>
+					<img src='3.png'/>
+					<img src='4.png'/>
+					<img src='5.png'/>  
+				</div>
+			</div>
+			
+			<div class='rulesBox'>
+				<p>+700</p>
+				<div class='rulesDiceBox'>
+					<img src='2.png'/>
+					<img src='3.png'/>
+					<img src='4.png'/>
+					<img src='5.png'/>  
+					<img src='6.png'/> 
+				</div>
+			</div>
 			<button onclick="closeRules()">Закрыть</button>
 		</div>
 	</body>

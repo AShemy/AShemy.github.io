@@ -80,9 +80,9 @@ body {
 	}
 	
 	.rulesDiceBox img{
-		height: 90%;
-		width: 9%;
-		margin-left: 10px;
+		height: 33px;
+		width: 33px;	
+		margin-left: 5px;
 	}
 	
 	.texts {

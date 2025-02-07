@@ -53,8 +53,10 @@ async function delayedDice() {
 	
 	let dices = [dice1, dice2, dice3, dice4, dice5, dice6];
 	
+	document.getElementById("scoreRound").innerText = "Очков за бросок: ...";
+	
 	btn.disabled = true;
-	btn.style.backgroundColor = '#808080';
+	btn.style.backgroundColor = 'lightgray';
 	btn.innerText = "Подождите...";
 	
 	if (player==1){
@@ -63,11 +65,11 @@ async function delayedDice() {
 		document.getElementById("player1").innerText = "Игрок 2"
 	}
 	
-	for (let o = 0; o<10; o++){
+	for (let o = 0; o<7; o++){
 		cubeGenerator6(animCube)
 		console.log(animCube)
 		await sleep(time);
-		time += 40
+		time *= 2;
 		for (let i = 0; i<animCube.length; i++){
 			if (animCube[i]==1){
 				dices[i].src = images[0];
@@ -222,19 +224,8 @@ function countingScore(howMany, score){
 		}
 		return(score)
 	}
-	
-//function tD(){
-//	if (player==1){
-//		document.getElementById("player1").innerText = "Игрок 1"
-//		throwDice(cubeGG, scoreGG);
-//		player++;
-//	}else if (player==2){
-//		document.getElementById("player1").innerText = "Игрок 2"
-//		throwDice(cubeEnemy, scoreEnemy);
-//		player--;
-//	}
-//}
-	
+
+//Основная функция. Бросок кубов, вывод очков на экран.	
 function throwDice(cube, score){
 	cubeGenerator6(cube);
 		
@@ -277,6 +268,7 @@ function throwDice(cube, score){
 	if (player==1){
 		scoreGG = scoreGG + scoreNow;
 		textScore1.innerText= "Счет Игрока1: "+scoreGG;
+		document.getElementById("player1").innerText = "Ход Игрока 2";
 		if (scoreGG>=4000){
 			document.getElementById("winPlayer1").style.display = "block"
 			document.getElementById("game").style.display = "none"
@@ -284,11 +276,13 @@ function throwDice(cube, score){
 	}else if (player==2){
 		scoreEnemy = scoreEnemy + scoreNow;
 		textScore2.innerText="Счет Игрока2: "+scoreEnemy;
+		document.getElementById("player1").innerText = "Ход Игрока 1";
 		if (scoreEnemy>=4000){
 			document.getElementById("winPlayer2").style.display = "block"
 			document.getElementById("game").style.display = "none"
 		}
 	}
+	
 	
 	document.getElementById("scoreRound").innerText = "Очков за бросок: "+scoreNow;
 	scoreNow = 0;

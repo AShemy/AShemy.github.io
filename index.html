@@ -1,138 +1,110 @@
-<html>
+<html lang="ru">
 	<head>
-		<link rel="stylesheet" href="zonkStyle.css">
-	</head>
-	<body>
-		<div id='winPlayer1' class="win">
-			<h1>Победил Игрок 1!</h1>
-			<button onClick="restart()">Заново</button>
-		</div>
-		
-		<div id='winPlayer2' class="win">
-			<h1>Победил Игрок 2!</h1>
-			<button onClick="restart()">Заново</button>
-		</div>
-	
-	
-		<div id="game">
-			<h1 >Zonk simulator v0.05</h1> 
-		
-			
-			<p id='score1' class='texts'>Счет Игрока1: 0</p>
-			<h1 id="player1" class='texts'>Игрок</h1>
-			<p id='score2' class='texts'>Счет Игрока2: 0</p>
-			
-			
-			<div class='dice'>
-				<img src='1.png' id='dice1'/>
-				<img src='2.png' id='dice2'/>
-				<img src='3.png' id='dice3'/>
-			</div>
-			<div class='dice'>
-				<img src='4.png' id='dice4'/>
-				<img src='5.png' id='dice5'/>
-				<img src='6.png' id='dice6'/>
-			</div>
-			<button onClick="delayedDice()" id="mainBtn">Кинуть кости</button>
-			<button onclick="showRules()">Комбинации</button>
-			<p id='scoreRound'>Очков за бросок: 0</p>
-		</div>
-		<div id="rules">
-			<h1>Комбинации</h1>
-			<div class='rulesBox'>
-				<p>Одна единица +100</p>
-				<div class='rulesDiceBox'>
-					<img src='1.png'/> 
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>Одна пятерка +50</p>
-				<div class='rulesDiceBox'>
-					<img src='5.png'/> 
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>Три единицы +1000</p>
-				<div class='rulesDiceBox'>
-					<img src='1.png'/>
-					<img src='1.png'/>
-					<img src='1.png'/>
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>Три одинаковых. Кубик x100. 2x100=200</p>
-				<div class='rulesDiceBox'>
-					<img src='2.png'/>
-					<img src='2.png'/>
-					<img src='2.png'/> 
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>+400 Каждый последущий x2. 200x2=400</p>
-				<div class='rulesDiceBox'>
-					<img src='2.png'/>
-					<img src='2.png'/>
-					<img src='2.png'/>
-					<img src='2.png'/>	
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>+800 Каждый последущий x2. 200x2x2=800</p>
-				<div class='rulesDiceBox'>
-					<img src='2.png'/>
-					<img src='2.png'/>
-					<img src='2.png'/>
-					<img src='2.png'/>	
-					<img src='2.png'/> 
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>+1500 </p>
-				<div class='rulesDiceBox'>
-					<img src='1.png'/>
-					<img src='2.png'/>
-					<img src='3.png'/>
-					<img src='4.png'/>
-					<img src='5.png'/>
-					<img src='6.png'/> 
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>+500</p>
-				<div class='rulesDiceBox'>
-					<img src='1.png'/>
-					<img src='2.png'/>
-					<img src='3.png'/>
-					<img src='4.png'/>
-					<img src='5.png'/>  
-				</div>
-			</div>
-			
-			<div class='rulesBox'>
-				<p>+700</p>
-				<div class='rulesDiceBox'>
-					<img src='2.png'/>
-					<img src='3.png'/>
-					<img src='4.png'/>
-					<img src='5.png'/>  
-					<img src='6.png'/> 
-				</div>
-			</div>
-			<button onclick="closeRules()">Закрыть</button>
-		</div>
+		<link rel="stylesheet" href="streets.css">
+        <meta charset="utf-8">
+        <title>Игра: Улица</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <audio src="music2.mp3" id="background-music" autoplay loop>
+            Ваш браузер не поддерживает аудио.
+        </audio>
+        <audio src="attack.mp3" id="attackMusic">
+            Ваш браузер не поддерживает аудио.
+        </audio>
+
+    </head>
+	<body id="mainScreen">
+    <!-- ================================== ***Основа***=================================== -->
+        <div class="heroProfile">
+            <p id="heroHp">Здоровье: 100</p>
+            <!--<p id="heroCoins">Монеты: 3</p>
+            <p id="heroRep">Репутация: 0</p>-->
+            <p id="heroDmg">Урон: 1</p>
+            <p id="mainQuest"><b>Задание:</b> Пройдись по городу</p>
+            <p id="inventory">В инвентаре: </p>
+
+            <p id="numberQuest">Номер квеста: </p>
+
+            <button onclick="newGame()">Новая игра</button>
+            <button onclick="save()">Сохранить игру</button>
+            <button onclick="load()">Загрузить игру</button>
+            <button onclick="deleteSave()">Стереть сейв</button>
+            <br/>
+            <button onclick="cheatDMG()">+100 урона</button>
+            <button onclick="cheatREPplus()">+100 репутации</button>
+            <button onclick="cheatCOINplus()">+100 монет</button>
+            <button onclick="cheatHunger()">+Сытость</button>
+            <br/>
+            <button onclick="cheatREPminus()">-100 репутации</button>
+            <button onclick="cheatCOINminus()">-100 монет</button>
+            <button onclick="cheatRESTART()">Начальные значения</button>
+            <br/>
+            <button onclick="plusMer()" id="merProfile">Мер: </button>
+            <button onclick="plusVolon()" id="volonProfile">Доброволец: </button>
+            <br/>
+            <button onclick="goHub()">В Хаб</button>
+            <button onclick="goFishing()">На рыбалку!</button>
+            <button onclick="cheatFish()">+Риба</button>
+            <button onclick="fishingBeggar()">Продать рыбу</button>
+
+        </div>
+
+        <div class="menu" id="menuStats">
+            <button onclick="showProfile()" class="btnProfile"></button>
+            <div id="stats" class="stats">
+                <img src="images/icons/hp.png" alt="Здоровье"/>
+                <div class="ggMainBar">
+                    <div id="ggBar"></div>
+                </div>
+
+                <img src="images/icons/hunger.webp"/>
+                <div class="ggMainBar">
+                    <div id="hungerBar"></div>
+                </div>
+
+                <img src="images/icons/coins.png"/>
+                <p id="coins">3</p>
+
+                <img src="images/icons/rep.png"/>
+                <p id="rep">0</p>
+            </div>
+            <button onclick="goMenu()" class="btnMusic" id="goMenuBtn"></button>
+        </div>
+
+        <img src="images/logo.webp" class="logo" id="logo"/>
+
+        <div class="characterImage" id="charImg"></div>
+
+
+        <div id="textBox"><p id="text">День 1. Куда отправимся?</p></div>
+
+
+        <div class="buttonbox" id="buttonBox"></div>
+
+
+
+        <div id="battleScene">
+            <div id="fist">
+                <div id="enemyImage">
+                    <div id="cut"></div>
+                </div>
+                <div id="enemyHpBar">
+                    <div id="enemyBar"></div>
+                </div>
+                <div onclick="hero.attack()" id="myProgress">
+                    <div id="myBar"></div>
+                </div>
+            </div>
+        </div>
 	</body>
 </html>
-<script src='zonkScript.js'></script>
 
 
+<script src='service.js'></script>
 
+<script src='streetsScript.js'></script>
 
+<script src='townEvents.js'></script>
+<script src='tavernEvents.js'></script>
 
-
+		
+		

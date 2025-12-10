@@ -439,14 +439,7 @@ button img {
     }
 
     body {
-        margin: 0%;
-        width: 100%;
-        height: 100%;
-        background: url('images/hub.jpg') center center no-repeat;
-        background-size: cover;
         font-size: 18px;
-        font-family: gabriola;
-        overflow: hidden;
     }
 
     .characterImage {
@@ -546,6 +539,13 @@ button img {
         font-size: 20px;
         font-family: gabriola;
     }
+    /*--------------------------Профиль--------------------*/
+    .heroProfile {
+        width: 85vw;
+        height: 80vh;
+        top: 10%;
+        left: 9%;
+    }
 
     /*------------------------Инвентарь-----------------------*/
     .inventory{
@@ -556,15 +556,19 @@ button img {
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
-        margin: auto;
         border-radius: 20px;
         border: 5px solid #89acc1;
         font-size: 3.2vw;
     }
 
+    .inventory p {
+        width: 90%;
+        text-align: center;
+    }
+
     .cell{
-        width: 25%;
-        height: 22%;
+        width: 23%;
+        height: 27%;
         background:  radial-gradient(#ecd0a4, #4e4444);
         border-radius: 20px;
         margin: 1%;
